@@ -18,9 +18,9 @@ export default createMuiTheme({
   },
   typography: {
     tab: {
-      fontFamily: "Raleway",
+      fontFamily: "Roboto",
       textTransform: "none",
-      fontWeight:700,
+      fontWeight:100,
       fontSize: "1rem"
     }
   }
