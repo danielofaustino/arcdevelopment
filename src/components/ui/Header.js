@@ -2,25 +2,27 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@material-ui/styles';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+
 
 //importing logo
 import logo from '../../assets/logo.png'
 
 // function NavBar Elevation 
 function ElevationScroll(props) {
-  const { children, window } = props;
-  // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here because the demo is in an iframe.
+
+  const { children } = props;
+ 
   const trigger = useScrollTrigger({
     disableHysteresis: true,
-    threshold: 0,
-    target: window ? window() : undefined,
+    threshold: 0
+   
   });
 
   return React.cloneElement(children, {
-    elevation: trigger ? 4 : 0,
+    elevation: trigger ? 4 : 0
   });
 }
 
@@ -29,12 +31,14 @@ function ElevationScroll(props) {
 const useStyles = makeStyles(theme =>({
   toolbarMargin: {
     ...theme.mixins.toolbar,
-    marginBottom: "1em"
+    marginBottom: "3em"
    },
    logo: {
-     height: "3em"
+     height: "3em",
+     maxWidth: 220,
+     marginRight: '10px'
    }
-}))
+}));
 
 
 
@@ -44,16 +48,23 @@ export default function Header(props) {
   const classes = useStyles()
 
   return(
-    <React.Fragment>
+    <>
       <ElevationScroll>
       <AppBar position="fixed"> 
-          <Toolbar disableGutters>
-           <img alt="company logo" className={classes.logo} src={logo} />
-          </Toolbar>
+        <Toolbar disableGutters>
+           <img src={logo} alt="company logo" className={classes.logo} />
+           <Tabs>
+            <Tab label="Home" />
+            <Tab label="Serviços" />
+            <Tab label="A Revolução" />
+            <Tab label="Sobre nós" />
+            <Tab label="Contato" />
+          </Tabs>
+        </Toolbar>
         </AppBar>
       </ElevationScroll>
       <div className={classes.toolbarMargin} />
-    </React.Fragment>
-  )
+    </>
+  );
 
 }
