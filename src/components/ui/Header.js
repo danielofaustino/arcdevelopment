@@ -35,8 +35,18 @@ const useStyles = makeStyles(theme =>({
    },
    logo: {
      height: "3em",
-     maxWidth: 220,
-     marginRight: '10px'
+     maxWidth: "14rem",
+     marginRight: '1rem',
+     marginLeft:'1rem'
+   },
+   tabContainer:{
+     marginLeft:'auto'
+   },
+   tab: {
+     ...theme.typography.tab,
+     minWidth:10,
+     marginLeft:"25px"
+     
    }
 }));
 
@@ -53,12 +63,12 @@ export default function Header(props) {
       <AppBar position="fixed"> 
         <Toolbar disableGutters>
            <img src={logo} alt="company logo" className={classes.logo} />
-           <Tabs>
-            <Tab label="Home" />
-            <Tab label="Serviços" />
-            <Tab label="A Revolução" />
-            <Tab label="Sobre nós" />
-            <Tab label="Contato" />
+           <Tabs className={classes.tabContainer}>
+            <Tab className={classes.tab} label="Home" />
+            <Tab className={classes.tab} label="Serviços" />
+            <Tab className={classes.tab} label="A Revolução" />
+            <Tab className={classes.tab} label="Sobre nós" />
+            <Tab className={classes.tab} label="Contato" />
           </Tabs>
         </Toolbar>
         </AppBar>

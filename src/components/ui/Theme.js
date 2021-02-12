@@ -14,11 +14,15 @@ export default createMuiTheme({
     },
     secondary: {
       main: `${arcGreen}`
-    },
-  typography:{
-    h3: {
-      fontWeight: 300
     }
-   }
+  },
+  typography: {
+    tab: {
+      fontFamily: "Raleway",
+      textTransform: "none",
+      fontWeight:700,
+      fontSize: "1rem"
+    }
   }
+
 });
