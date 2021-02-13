@@ -22,7 +22,15 @@ export default createMuiTheme({
       textTransform: "none",
       fontWeight:100,
       fontSize: "1rem"
+    },
+    whatsapp:{
+      fontFamily:"Roboto",
+       fontSize:"1rem",
+       fontWeight:700,
+       textTransform: "none", // Disable capital letter
+       color:"white"
     }
   }
+  
 
 });
