@@ -85,7 +85,7 @@ export default function Header(props) {
             value={value} 
              onChange={handleChange} 
              className={classes.tabContainer}
-             indicatorColor="primary" // don't show the underline 
+             indicatorColor="secondary" // don't show the underline 
              
             >
             <Tab className={classes.tab} label="Home" />
