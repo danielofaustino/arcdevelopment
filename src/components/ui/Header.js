@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Button from '@material-ui/core/Button'
+import { Link } from "react-router-dom"
 
 
 //importing logo
@@ -88,11 +89,11 @@ export default function Header(props) {
              indicatorColor="secondary" // don't show the underline 
              
             >
-            <Tab className={classes.tab} label="Home" />
-            <Tab className={classes.tab} label="Serviços" />
-            <Tab className={classes.tab} label="A Revolução" />
-            <Tab className={classes.tab} label="Sobre nós" />
-            <Tab className={classes.tab} label="Contato" />
+            <Tab className={classes.tab} component={Link} to="/" label="Home" />
+            <Tab className={classes.tab} component={Link} to="/services" label="Serviços" />
+            <Tab className={classes.tab} component={Link} to="/revolution" label="A Revolução" />
+            <Tab className={classes.tab} component={Link} to="/about" label="Sobre nós" />
+            <Tab className={classes.tab} component={Link} to="/contact" label="Contato" />
           </Tabs>
           <Button variant="contained" color="secondary" className={classes.button}>
             WhatsApp
