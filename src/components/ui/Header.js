@@ -41,6 +41,10 @@ const useStyles = makeStyles(theme =>({
      marginRight: '1rem',
      marginLeft:'1rem'
    },
+   logoContainer:{
+    padding:0
+    
+   },
    tabContainer:{
      marginLeft:'auto'
    },
@@ -97,7 +101,9 @@ export default function Header(props) {
       <ElevationScroll>
       <AppBar position="fixed"> 
         <Toolbar disableGutters>
+          <Button className={classes.logoContainer} component ={Link} to="/">
            <img src={logo} alt="company logo" className={classes.logo} />
+           </Button>
            <Tabs
             value={value} 
              onChange={handleChange} 
