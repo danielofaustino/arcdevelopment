@@ -39,6 +39,9 @@ const useStyles = makeStyles((theme) => ({
   },
   logoContainer: {
     padding: 0,
+    "&:hover":{
+      backgroundColor:"transparent",
+    }
   },
   tabContainer: {
     marginLeft: 'auto',
@@ -91,6 +94,7 @@ export default function Header(props) {
             <Button
               component={Link}
               to="/"
+              disableRipple // disable the Ripple Effect
               onClick={() => {
                 setValue(0);
               }}
