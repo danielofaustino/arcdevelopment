@@ -7,6 +7,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 //importing logo
 import logo from '../../assets/logo.png';
@@ -39,9 +41,9 @@ const useStyles = makeStyles((theme) => ({
   },
   logoContainer: {
     padding: 0,
-    "&:hover":{
-      backgroundColor:"transparent",
-    }
+    '&:hover': {
+      backgroundColor: 'transparent',
+    },
   },
   tabContainer: {
     marginLeft: 'auto',
@@ -59,16 +61,54 @@ const useStyles = makeStyles((theme) => ({
     marginRight: '25px',
     height: '45px',
   },
+  menu: {
+    backgroundColor: theme.palette.common.blue,
+    color: 'white',
+    borderRadius: '0px',
+  },
+  menuItem: {
+    ...theme.typography.tab,
+    opacity: 0.7,
+    '&:hover': {
+      opacity: 1,
+    },
+  },
 }));
 
 // Header component function
 export default function Header(props) {
   const classes = useStyles();
   const [value, setValue] = useState(0);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const handleChange = (e, value) => {
     setValue(value);
   };
+
+  const handleClick = (e) => {
+    setAnchorEl(e.currentTarget);
+    setOpen(true);
+  };
+
+  const handleMenuItemClick = (e, i) => {
+    setAnchorEl(null);
+    setOpen(false);
+    setSelectedIndex(i);
+  };
+
+  const handleClose = (e) => {
+    setAnchorEl(null);
+    setOpen(false);
+  };
+
+  const menuOptions = [
+    { name: 'Serviços', link: '/services' },
+    { name: 'Custom Software', link: '/customsoftware' },
+    { name: 'Mobile App Development', link: '/mobileapps' },
+    { name: 'Website Development', link: '/websites' },
+  ];
 
   useEffect(() => {
     if (window.location.pathname === '/' && value !== 0) {
@@ -115,8 +155,11 @@ export default function Header(props) {
                 label="Home"
               />
               <Tab
+                aria-owns={anchorEl ? 'simple-menu' : undefined}
+                aria-haspopup={anchorEl ? 'true' : undefined}
                 className={classes.tab}
                 component={Link}
+                onMouseOver={(event) => handleClick(event)}
                 to="/services"
                 label="Serviços"
               />
@@ -146,6 +189,31 @@ export default function Header(props) {
             >
               WhatsApp
             </Button>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              classes={{ paper: classes.menu }}
+              MenuListProps={{ onMouseLeave: handleClose }}
+              elevation={0}
+            >
+              {menuOptions.map((option, i) => (
+                <MenuItem key={option}
+                  component={Link}
+                  to={option.link}
+                  classes={{ root: classes.menuItem }}
+                  onClick={(event) => {
+                    handleMenuItemClick(event, i);
+                    setValue(1);
+                    handleClose();
+                  }}
+                  selected={i === selectedIndex && value === 1}
+                >
+                  {option.name}
+                </MenuItem>
+              ))}
+            </Menu>
           </Toolbar>
         </AppBar>
       </ElevationScroll>

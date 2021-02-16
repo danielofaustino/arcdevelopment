@@ -29,6 +29,6 @@ export default createMuiTheme({
       fontWeight: 700,
       textTransform: 'none', // Disable capital letter
       color: 'white',
-    },
+    }
   },
 });
