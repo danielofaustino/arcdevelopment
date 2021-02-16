@@ -199,7 +199,8 @@ export default function Header(props) {
               elevation={0}
             >
               {menuOptions.map((option, i) => (
-                <MenuItem key={option}
+                <MenuItem
+                  key={option}
                   component={Link}
                   to={option.link}
                   classes={{ root: classes.menuItem }}
