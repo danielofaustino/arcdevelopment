@@ -88,7 +88,14 @@ export default function Header(props) {
       <ElevationScroll>
         <AppBar position="fixed">
           <Toolbar disableGutters>
-            <Button className={classes.logoContainer} component={Link} to="/">
+            <Button
+              component={Link}
+              to="/"
+              onClick={() => {
+                setValue(0);
+              }}
+              className={classes.logoContainer}
+            >
               <img src={logo} alt="company logo" className={classes.logo} />
             </Button>
             <Tabs
